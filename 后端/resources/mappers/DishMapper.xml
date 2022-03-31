@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nengguoqieguo.dao.DishMapper">
+    <select id="findAllDish" resultType="com.nengguoqieguo.entity.Dish">
+        select * from dish
+    </select>
+    <select id="findDishByDishname" parameterType="String" resultType="com.nengguoqieguo.entity.Dish">
+        select * from dish where dishname = #{dishname}
+    </select>
+    <select id="findImageByDishname" parameterType="String" resultType="String">
+        select image from dish where dishname = #{dishname}
+    </select>
+</mapper>

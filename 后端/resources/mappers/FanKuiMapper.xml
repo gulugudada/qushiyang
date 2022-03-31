@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nengguoqieguo.dao.FanKuiMapper">
+    <insert id="addFanKui" parameterType="com.nengguoqieguo.entity.FanKui">
+        insert into fankui(username,fankui) values (#{username},#{fankui})
+    </insert>
+    <select id="findAllFankui" parameterType="Integer" resultType="com.nengguoqieguo.entity.FanKui">
+        select * from fankui limit #{start},5
+    </select>
+    <select id="findSearch" resultType="com.nengguoqieguo.entity.FanKui">
+        select * from fankui where username = #{search} limit #{start},5
+    </select>
+    <select id="findCount" resultType="Integer">
+        select count(*) from fankui
+    </select>
+    <select id="findSearchCount" parameterType="String" resultType="Integer">
+        select count(*) from fankui where username = #{search}
+    </select>
+</mapper>

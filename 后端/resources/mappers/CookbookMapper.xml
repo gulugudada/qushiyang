@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nengguoqieguo.dao.CookbookMapper">
+    <select id="findAllCookbook" resultType="com.nengguoqieguo.entity.Cookbook">
+        select * from cookbook
+    </select>
+    <select id="findCookbookByPhysique" parameterType="String" resultMap="CookbookMap">
+        select cookbook.*,dish.* from cookbook,dish where physique = #{physique} and cookbook.dishname = dish.dishname
+    </select>
+    <select id="findAllPhysiqueCookbook" resultMap="CookbookMap">
+        select cookbook.*,dish.* from cookbook,dish where cookbook.dishname = dish.dishname
+    </select>
+    <select id="findAllPhysiqueCookbook1" parameterType="Integer" resultMap="CookbookMap">
+        select cookbook.*,dish.* from cookbook,dish where cookbook.dishname = dish.dishname limit #{start},3
+    </select>
+    <resultMap id="CookbookMap" type="com.nengguoqieguo.entity.Cookbook">
+        <id property="id" column="cookbook.id"/>
+        <result property="physique" column="physique"/>
+        <association property="dish" javaType="com.nengguoqieguo.entity.Dish">
+            <id property="id" column="dish.id"/>
+            <result property="dishname" column="dishname"/>
+            <result property="stock" column="stock"/>
+            <result property="method" column="method"/>
+            <result property="effect" column="effect"/>
+            <result property="image" column="image"/>
+        </association>
+    </resultMap>
+    <select id="findCount" resultType="Integer">
+        select count(*) from cookbook
+    </select>
+    <select id="findSearch" resultMap="CookbookMap">
+        select cookbook.*,dish.* from cookbook,dish where cookbook.dishname = dish.dishname and (physique = #{search} or cookbook.dishname = #{search}) limit #{start},3
+    </select>
+    <select id="findSearchCount" parameterType="String" resultType="Integer">
+        select count(*) from cookbook where physique = #{search} or dishname = #{search}
+    </select>
+</mapper>

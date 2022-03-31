@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nengguoqieguo.dao.CollectMapper">
+    <select id="findAllCollect" resultType="com.nengguoqieguo.entity.Collect">
+        select * from collect
+    </select>
+    <select id="findCollectByUsername" parameterType="String" resultType="com.nengguoqieguo.entity.Collect">
+        select * from collect where username = #{username}
+    </select>
+    <select id="findTypeByUsernameDishname" parameterType="String" resultType="String">
+        select type from collect where username = #{username} and dishname = #{dishname}
+    </select>
+    <insert id="addCollect" parameterType="com.nengguoqieguo.entity.Collect">
+        insert into collect (username,dishname,image,type) values (#{username},#{dishname},#{image},#{type})
+    </insert>
+    <delete id="deleteCollect" parameterType="String">
+        delete from collect where username = #{username} and dishname = #{dishname}
+    </delete>
+    <select id="findIsCollectByUsernameDishname" parameterType="String" resultType="Integer">
+        select count(*) from collect where username = #{username} and dishname = #{dishname}
+    </select>
+</mapper>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nengguoqieguo.dao.UserMapper">
+    <select id="findAllUser" resultMap="userMap">
+        select user.*,education.*
+        from user,education
+        where user.educationid = education.id
+    </select>
+    <select id="findUserByUsername" resultMap="userMap" parameterType="String">
+        select user.*,education.*
+        from user,education
+        where user.educationid = education.id and user.username = #{username}
+    </select>
+    <resultMap id="userMap" type="com.nengguoqieguo.entity.User">
+        <id property="id" column="id"></id>
+        <result property="username" column="username"></result>
+        <result property="birthday" column="birthday"></result>
+        <result property="sex" column="sex"></result>
+        <result property="constellation" column="constellation"></result>
+        <result property="location" column="location"></result>
+        <result property="physique" column="physique"></result>
+        <result property="touxiang" column="touxiang"></result>
+        <association property="education" javaType="com.nengguoqieguo.entity.Education">
+            <id property="id" column="educationid"></id>
+            <result property="school" column="school"></result>
+            <result property="grade" column="grade"></result>
+            <result property="college" column="college"></result>
+            <result property="administrativeclass" column="administrativeclass"></result>
+        </association>
+    </resultMap>
+    <insert id="addUser"
+            parameterType="com.nengguoqieguo.entity.User"
+            useGeneratedKeys="true"
+            keyProperty="id">
+        insert into user (username,birthday,sex,constellation,location,physique,educationid,touxiang) values (#{username},#{birthday},#{sex},#{constellation},#{location},#{physique},#{education.id},#{touxiang})
+    </insert>
+    <select id="findEducationId" parameterType="String" resultType="Integer">
+        select educationid from user where username = #{username}
+    </select>
+    <update id="updateUser"
+            parameterType="com.nengguoqieguo.entity.User">
+        update user,education
+        set birthday = #{birthday},sex = #{sex},constellation = #{constellation},location = #{location},physique = #{physique}
+        where username = #{username}
+    </update>
+    <update id="updatePhysique" parameterType="String">
+        update user set physique = #{physique} where username = #{username}
+    </update>
+</mapper>

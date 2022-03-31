@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nengguoqieguo.dao.SeasonTuiJianMapper">
+    <select id="findAllSeasonTuiJian" resultType="com.nengguoqieguo.entity.SeasonTuiJian">
+        select * from seasontuijian
+    </select>
+    <select id="findSeasonTuiJianBySeason" parameterType="String" resultType="com.nengguoqieguo.entity.SeasonTuiJian">
+        select * from seasontuijian where season = #{season}
+    </select>
+    <select id="findSeasonTuiJianByCookbook" parameterType="String" resultType="com.nengguoqieguo.entity.SeasonTuiJian">
+        select * from seasontuijian where cookbook = #{cookbook}
+    </select>
+    <select id="findImageByCookbook" parameterType="String" resultType="String">
+        select image from seasontuijian where cookbook = #{cookbook}
+    </select>
+    <select id="findAllSeasonTuiJian1" parameterType="Integer" resultType="com.nengguoqieguo.entity.SeasonTuiJian">
+        select * from seasontuijian limit #{start},5
+    </select>
+    <select id="findSearch" resultType="com.nengguoqieguo.entity.SeasonTuiJian">
+        select * from seasontuijian where season = #{search} or cookbook = #{search} limit #{start},5
+    </select>
+    <select id="findCount" resultType="Integer">
+        select count(*) from seasontuijian
+    </select>
+    <select id="findSearchCount" parameterType="String" resultType="Integer">
+        select count(*) from seasontuijian where season = #{search} or cookbook = #{search}
+    </select>
+    <insert id="addSeasonTuiJian" parameterType="String">
+        insert into seasontuijian (season,cookbook,method) values (#{season},#{cookbook},#{method})
+    </insert>
+    <update id="updateSeasonTuiJian" parameterType="String">
+        update seasontuijian set season = #{season},method = #{method} where cookbook = #{cookbook}
+    </update>
+    <delete id="deleteAccount1" parameterType="String">
+        delete from seasontuijian where cookbook = #{cookbook}
+    </delete>
+</mapper>

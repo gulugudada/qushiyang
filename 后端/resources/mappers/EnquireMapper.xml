@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nengguoqieguo.dao.EnquireMapper">
+    <select id="findEnquire" parameterType="String" resultType="String">
+        SELECT answer FROM enquire WHERE question LIKE "%"#{question}"%"
+    </select>
+    <select id="findEnquire1" parameterType="Integer" resultType="com.nengguoqieguo.entity.Enquire">
+        select * from enquire limit #{start},5
+    </select>
+    <select id="findCount" resultType="Integer">
+        select count(*) from enquire
+    </select>
+    <select id="findSearch" resultType="com.nengguoqieguo.entity.Enquire">
+        select * from enquire where question LIKE "%"#{search}"%" limit #{start},5
+    </select>
+    <select id="findSearchCount" parameterType="String" resultType="Integer">
+        select count(*) from enquire where question LIKE "%"#{search}"%"
+    </select>
+</mapper>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nengguoqieguo.dao.EducationMapper">
+    <select id="findEducation" resultType="com.nengguoqieguo.entity.Education"
+            parameterType="Integer">
+        select * from education where id = #{id}
+    </select>
+    <insert id="addEducation"
+            useGeneratedKeys="true"
+            keyProperty="id"
+            parameterType="com.nengguoqieguo.entity.Education">
+        insert into education (school,grade,college,administrativeclass) values (#{school},#{grade},#{college},#{administrativeclass})
+    </insert>
+    <update id="updateEducation" parameterType="com.nengguoqieguo.entity.Education">
+        update education set school = #{school},grade = #{grade},college = #{college},administrativeclass = #{administrativeclass} where id = #{id}
+    </update>
+</mapper>

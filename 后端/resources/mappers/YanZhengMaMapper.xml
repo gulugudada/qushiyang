@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nengguoqieguo.dao.YanZhengMaMapper">
+    <select id="findYanZhengMaByAccount" parameterType="String" resultType="String">
+        select yanzhengma from yanzhengma where account = #{account}
+    </select>
+    <select id="findAcountIsUse" parameterType="String" resultType="Integer">
+        select count(*) from yanzhengma where account = #{account}
+    </select>
+    <insert id="addYanZhengMa" parameterType="com.nengguoqieguo.entity.YanZhengMa">
+        insert into yanzhengma (account,yanzhengma) values (#{account},#{yanzhengma})
+    </insert>
+    <update id="updateYanZhengMa" parameterType="com.nengguoqieguo.entity.YanZhengMa">
+        update yanzhengma set yanzhengma = #{yanzhengma} where account = #{account}
+    </update>
+    <delete id="deleteYanZhengMaByAccount" parameterType="String">
+        delete from yanzhengma where account = #{account}
+    </delete>
+</mapper>

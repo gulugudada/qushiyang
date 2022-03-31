@@ -1,0 +1,97 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/screen"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".login.LoginActivity"
+    android:background="@drawable/e3">
+
+    <LinearLayout
+        android:id="@+id/loginPanel"
+        android:layout_width="400dp"
+        android:layout_height="400dp"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical"
+        android:layout_marginTop="150dp"
+        android:background="@drawable/background_login_div" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="15dp"
+            android:text="欢迎来到食疗世界"
+            android:textSize="25dp" />
+
+        <com.hnucm.qushiyang.utils.CircleImageView
+            android:id="@+id/imageView7"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/touxiang"
+            android:layout_gravity="center"
+            />
+
+
+
+        <EditText
+            android:id="@+id/accountEt"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="15dp"
+            android:singleLine="true"
+            android:background="@drawable/background_edit_login"
+            android:hint="请输入您的电话号码"
+            android:ems="10" >
+
+            <requestFocus />
+        </EditText>
+
+        <EditText
+            android:id="@+id/pwdEt"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="15dp"
+            android:singleLine="true"
+            android:password="true"
+            android:background="@drawable/background_edit_login"
+            android:hint="请输入您的密码"
+            android:ems="10" />
+
+        <LinearLayout
+            android:id="@+id/loginPanel1"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/background_login_div" >
+
+
+            <Button
+                android:id="@+id/subBtn"
+                android:layout_width="167dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|right"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="18dp"
+                android:background="@drawable/background_button_div"
+                android:text="登陆" />
+
+            <Button
+                android:id="@+id/regBtn"
+                android:layout_width="167dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|left"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="18dp"
+                android:background="@drawable/background_button_div"
+                android:text="注册" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

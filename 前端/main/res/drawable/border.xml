@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 基本边框线 -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android" >
+    <!-- 实心 ，背景颜色 #00000000表示透明-->
+    <solid android:color="#00000000" />
+    <stroke
+        android:width="0.05dp"
+        android:color="#000000" />
+    <padding
+        android:bottom="1dp"
+        android:top="1dp"
+        android:left="1dp"
+        android:right="1dp" />
+</shape>
